@@ -20,6 +20,11 @@ const sushiContract = new ethers.Contract(sushiRouterAddress,routerAbi, provider
 const amountIn = ethers.utils.parseEther("1");
 
 const main = async () => {
-  const uniPrice = uniContract.getAmounOut(amountIn, PATH);
-  const sushiPrice = sushiContract.getAmounOut(amountIn, PATH);
+  const uniAmount = uniContract.getAmounOut(amountIn, PATH);
+  const sushiAmount = sushiContract.getAmounOut(amountIn, PATH);
+
+  const uniPrice = Number(uniAmount[1])/ Number(uniAmount[0]);
+  const sushiPrice = Number(sushiAmount[1])/ Number(sushiAmount[0]);
+  console.log("uniPrice",uniPrice);
+  console.log("sushiPrice",sushiPrice);
 };
