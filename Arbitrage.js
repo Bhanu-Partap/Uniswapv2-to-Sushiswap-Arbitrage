@@ -15,5 +15,14 @@ const routerAbi = [
   "function getAmountsOut(uint amountIn, address[] memory path) public view returns (uint[] memory amounts);",
 ];
 
-const uniRouter = new ethers.Contract(uniRouterAddress, routerAbi, provider);
-const sushiRouter = new ethers.Contract(sushiRouterAddress,routerAbi,provider);
+const uniContract = new ethers.Contract(uniRouterAddress, routerAbi, provider);
+const sushiContract = new ethers.Contract(sushiRouterAddress,routerAbi,provider);
+
+const  amountIn = ethers.utils.parseEther("1")
+
+const main= async ()=>{
+const uniPrice = uniContract.getAmounOut(amountIn,PATH)
+const sushiPrice = sushiContract.getAmounOut(amountIn,PATH)
+
+}
+
