@@ -1,7 +1,6 @@
 require("dotenv").config();
 const ethers = require("ethers");
-const [RPC_URL, TOKEN0, TOKEN1, UNIROUTERADDRESS, SUSHIROUTERADDRESS] =
-  proces.env;
+const [RPC_URL, TOKEN0, TOKEN1, UNIROUTERADDRESS, SUSHIROUTERADDRESS] = process.env;
 const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
 
 const token0 = TOKEN0;
@@ -16,13 +15,11 @@ const routerAbi = [
 ];
 
 const uniContract = new ethers.Contract(uniRouterAddress, routerAbi, provider);
-const sushiContract = new ethers.Contract(sushiRouterAddress,routerAbi,provider);
+const sushiContract = new ethers.Contract(sushiRouterAddress,routerAbi, provider);
 
-const  amountIn = ethers.utils.parseEther("1")
+const amountIn = ethers.utils.parseEther("1");
 
-const main= async ()=>{
-const uniPrice = uniContract.getAmounOut(amountIn,PATH)
-const sushiPrice = sushiContract.getAmounOut(amountIn,PATH)
-
-}
-
+const main = async () => {
+  const uniPrice = uniContract.getAmounOut(amountIn, PATH);
+  const sushiPrice = sushiContract.getAmounOut(amountIn, PATH);
+};
