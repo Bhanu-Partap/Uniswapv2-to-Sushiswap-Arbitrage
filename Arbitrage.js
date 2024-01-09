@@ -9,3 +9,11 @@ const token1 = TOKEN1;
 
 const uniRouterAddress = UNIROUTERADDRESS;
 const sushiRouterAddress = SUSHIROUTERADDRESS;
+const PATH = [token0, token1];
+
+const routerAbi = [
+  "function getAmountsOut(uint amountIn, address[] memory path) public view returns (uint[] memory amounts);",
+];
+
+const uniRouter = new ethers.Contract(uniRouterAddress, routerAbi, provider);
+const sushiRouter = new ethers.Contract(sushiRouterAddress,routerAbi,provider);
